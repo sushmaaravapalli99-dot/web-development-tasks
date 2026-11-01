@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Appointment Booking</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background: aliceblue; color: darkslateğray; line-height: 1.6; }
+
+        header { background: white; border-bottom: 4px solid royalblue; padding: 20px; text-align: center; }
+        header h1 { color: royalblue; font-size: 2rem; }
+        header p { color: gray; margin-top: 5px; }
+
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        
+        .main-layout { display: table; width: 100%; table-layout: fixed; border-spacing: 20px 0; }
+        .column-left { display: table-cell; width: 55%; vertical-align: top; }
+        .column-right { display: table-cell; width: 45%; vertical-align: top; }
+
+        .section-heading { background: royalblue; color: white; padding: 12px 15px; font-size: 1.2rem; margin-bottom: 15px; border-radius: 4px; }
+
+        .doctor-card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid lightblue; }
+        .doctor-card.selected { border: 2px solid royalblue; background: mintcream; }
+        .doc-name { font-size: 1.2rem; color: royalblue; font-weight: bold; }
+        .specialty { font-weight: bold; color: darkslategray; margin: 4px 0; }
+        .timing { color: gray; font-size: 0.95rem; margin-bottom: 10px; }
+        
+        .slot-title { font-size: 0.9rem; font-weight: bold; margin-bottom: 6px; }
+        .slots { display: block; }
+        .badge { display: inline-block; padding: 4px 10px; margin: 2px 4px 2px 0; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
+        .available { background: lightgreen; color: darkgreen; border: 1px solid green; }
+        .booked { background: lightpink; color: darkred; border: 1px solid red; text-decoration: line-through; opacity: 0.7; }
+
+        .form-container { background: white; padding: 25px; border-radius: 8px; border: 1px solid lightblue; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: bold; color: darkslategray; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid silver; border-radius: 4px; font-size: 1rem; color: black; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: royalblue; outline: none; background: whitesmoke; }
+        
+        .radio-set { padding: 5px 0; }
+        .radio-set label { display: inline-block; margin-right: 20px; font-weight: normal; cursor: pointer; color: black; }
+        .radio-set input { width: auto; margin-right: 5px; vertical-align: middle; }
+
+        .submit-btn { background: royalblue; color: white; border: none; width: 100%; padding: 14px; border-radius: 4px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+        .submit-btn:hover { background: navy; }
+
+        @media (max-width: 800px) {
+            .main-layout, .column-left, .column-right { display: block; width: 100%; }
+            .column-right { margin-top: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>City Healthcare Center</h1>
+        <p>Quick and Easy Online Appointment Scheduling</p>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            
+            <div class="column-left">
+                <div class="section-heading">1. Select a Doctor & View Slots</div>
+                
+                <div class="doctor-card selected">
+                    <div class="doc-name">Dr. Ramesh Kumar</div>
+                    <div class="specialty">Cardiologist (Heart Specialist)</div>
+                    <div class="timing">Consultation: Mon to Fri - 09:00 AM to 01:00 PM</div>
+                    <div class="slot-title">Today's Appointment Slots:</div>
+                    <div class="slots">
+                        <span class="badge available">09:30 AM Available</span>
+                        <span class="badge booked">10:30 AM Booked</span>
+                        <span class="badge available">11:15 AM Available</span>
+                        <span class="badge available">12:00 PM Available</span>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <div class="doc-name">Dr. Anita Sharma</div>
+                    <div class="specialty">Pediatrician (Child Specialist)</div>
+                    <div class="timing">Consultation: Mon to Sat - 02:00 PM to 06:00 PM</div>
+                    <div class="slot-title">Today's Appointment Slots:</div>
+                    <div class="slots">
+                        <span class="badge booked">02:30 PM Booked</span>
+                        <span class="badge available">03:30 PM Available</span>
+                        <span class="badge available">04:15 PM Available</span>
+                        <span class="badge booked">05:00 PM Booked</span>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <div class="doc-name">Dr. S. Srinivasan</div>
+                    <div class="specialty">Neurologist (Brain & Nerve Specialist)</div>
+                    <div class="timing">Consultation: Tue & Thu - 10:00 AM to 04:00 PM</div>
+                    <div class="slot-title">Today's Appointment Slots:</div>
+                    <div class="slots">
+                        <span class="badge available">10:00 AM Available</span>
+                        <span class="badge available">11:30 AM Available</span>
+                        <span class="badge booked">01:00 PM Booked</span>
+                        <span class="badge available">02:30 PM Available</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-right">
+                <div class="section-heading">2. Patient Registration Form</div>
+                <div class="form-container">
+                    <form>
+                        <div class="form-group">
+                            <label for="fullname">Patient Full Name:</label>
+                            <input type="text" id="fullname" placeholder="Enter first and last name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Mobile Number:</label>
+                            <input type="tel" id="phone" placeholder="Enter 10-digit mobile number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender:</label>
+                            <div class="radio-set">
+                                <label><input type="radio" name="gender" value="male" required> Male</label>
+                                <label><input type="radio" name="gender" value="female"> Female</label>
+                                <label><input type="radio" name="gender" value="other"> Other</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-date">Appointment Date:</label>
+                            <input type="date" id="book-date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doc-select">Choose Doctor & Time Slot:</label>
+                            <select id="doc-select" required>
+                                <option value="">-- Click to select an open slot --</option>
+                                <option value="dr1_s1">Dr. Ramesh Kumar - 09:30 AM</option>
+                                <option value="dr1_s2">Dr. Ramesh Kumar - 11:15 AM</option>
+                                <option value="dr1_s3">Dr. Ramesh Kumar - 12:00 PM</option>
+                                <option value="dr2_s1">Dr. Anita Sharma - 03:30 PM</option>
+                                <option value="dr2_s2">Dr. Anita Sharma - 04:15 PM</option>
+                                <option value="dr3_s1">Dr. S. Srinivasan - 10:00 AM</option>
+                                <option value="dr3_s2">Dr. S. Srinivasan - 11:30 AM</option>
+                                <option value="dr3_s3">Dr. S. Srinivasan - 02:30 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Reason for Visit / Symptoms:</label>
+                            <textarea id="reason" rows="3" placeholder="Briefly describe your medical issue..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Confirm My Appointment</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
