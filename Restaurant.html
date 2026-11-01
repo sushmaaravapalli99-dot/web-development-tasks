@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Elegant Bistro</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Georgia, serif; }
+        body { background-color: floralwhite; color: darkslategray; line-height: 1.6; }
+        
+        nav { background: saddlebrown; padding: 15px 30px; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { color: gold; font-size: 1.5rem; font-weight: bold; font-style: italic; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: papayawhip; text-decoration: none; font-size: 1rem; font-weight: bold; transition: color 0.3s; }
+        nav ul li a:hover { color: gold; }
+
+        .hero { background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), chocolate; color: white; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-style: italic; margin-bottom: 10px; color: gold; }
+        .hero p { font-size: 1.3rem; font-family: sans-serif; color: linen; }
+
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        h2 { text-align: center; margin-bottom: 40px; color: saddlebrown; font-size: 2.2rem; font-style: italic; }
+        h2::after { content: ''; display: block; width: 80px; height: 2px; background: gold; margin: 10px auto 0; }
+
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .menu-section { background: white; padding: 25px; border-radius: 4px; border: 1px solid wheat; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .menu-section h3 { border-bottom: 2px solid saddlebrown; padding-bottom: 5px; margin-bottom: 15px; color: saddlebrown; font-style: italic; }
+        .menu-item { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px dashed lightgray; padding-bottom: 4px; }
+        .item-name { font-weight: bold; }
+        .item-price { color: chocolate; font-weight: bold; }
+
+        .ambience-chef-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .info-card { background: white; padding: 30px; border-radius: 4px; border: 1px solid wheat; }
+        .info-card h3 { color: saddlebrown; margin-bottom: 15px; font-style: italic; }
+        .info-card p { font-family: sans-serif; font-size: 0.95rem; color: dimgray; margin-bottom: 10px; }
+
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .testimonial-card { background: ivory; padding: 20px; border-left: 4px solid gold; border-top: 1px solid wheat; border-right: 1px solid wheat; border-bottom: 1px solid wheat; font-style: italic; }
+        .testimonial-card p { margin-bottom: 10px; }
+        .author { font-weight: bold; color: saddlebrown; font-style: normal; font-size: 0.9rem; text-align: right; }
+
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; background: sienna; color: white; padding: 30px; border-radius: 4px; }
+        .footer-box h3 { color: gold; margin-bottom: 15px; font-style: italic; border-bottom: 1px solid chocolate; padding-bottom: 5px; }
+        .footer-box p { font-family: sans-serif; font-size: 0.95rem; margin-bottom: 8px; color: papayawhip; }
+
+        form { background: white; padding: 35px; border-radius: 4px; border: 1px solid wheat; box-shadow: 0 4px 10px rgba(0,0,0,0.05); max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: bold; color: saddlebrown; font-size: 0.95rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid tan; border-radius: 4px; font-size: 1rem; color: darkresizable; background-color: ivory; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: chocolate; background-color: white; }
+        button { background: saddlebrown; color: white; padding: 14px 28px; border: none; border-radius: 4px; cursor: pointer; font-size: 1.1rem; font-weight: bold; width: 100%; transition: background 0.3s; }
+        button:hover { background: chocolate; }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; text-align: center; }
+            nav ul { margin-top: 15px; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">L'Étoile Bistro</div>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#reserve">Book a Table</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Experience Fine Dining</h1>
+        <p>A harmony of fresh local ingredients and timeless culinary tradition</p>
+    </section>
+
+    <div class="container" id="menu">
+        <h2>Our Culinary Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-section">
+                <h3>Appetizers</h3>
+                <div class="menu-item">
+                    <span class="item-name">Truffle Wild Mushroom Soup</span>
+                    <span class="item-price">₹350</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Crispy Calamari Rings</span>
+                    <span class="item-price">₹420</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Goat Cheese Bruschetta</span>
+                    <span class="item-price">₹380</span>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <h3>Main Course</h3>
+                <div class="menu-item">
+                    <span class="item-name">Pan-Seared Atlantic Salmon</span>
+                    <span class="item-price">₹850</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Roasted Herb Chicken Breast</span>
+                    <span class="item-price">₹650</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Wild Mushroom Risotto</span>
+                    <span class="item-price">₹580</span>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <h3>Desserts & Beverages</h3>
+                <div class="menu-item">
+                    <span class="item-name">Classic Madagascar Vanilla Crème Brûlée</span>
+                    <span class="item-price">₹290</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Dark Chocolate Fondant</span>
+                    <span class="item-price">₹320</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Artisanal Roasted Coffee</span>
+                    <span class="item-price">₹180</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="about">
+        <h2>Our Ambience & Chefs</h2>
+        <div class="ambience-chef-grid">
+            <div class="info-card">
+                <h3>The Bistro Ambience</h3>
+                <p>Step into an elegant environment designed to soothe the senses. With warm amber lighting, soft classical background melodies, and historic velvet booth seating, our dining space provides the ideal intimate setting for family celebrations, business meetups, or romantic dinners.</p>
+            </div>
+            <div class="info-card">
+                <h3>Meet Master Chef Marco</h3>
+                <p>Guided by our culinary director Chef Marco Silva, who brings over fifteen years of international luxury dining experience, the kitchen turns out beautifully balanced food plates. We pride ourselves on sourcing organic farm produce daily to craft deep, unforgettable flavor structures.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="testimonials">
+        <h2>Customer Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"The wild mushroom risotto was absolutely incredible. The service was impeccable, and the vintage styling makes you want to stay for hours."</p>
+                <div class="author">— Priya R.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"An absolute gem of a place! Chef Marco personally stopped by our table to check on the salmon. A flawless dining experience."</p>
+                <div class="author">— Vikram S.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Elegant atmosphere, warm hospitality, and the crème brûlée is out of this world. Highly recommend booking a reservation in advance."</p>
+                <div class="author">— Ananya K.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-box">
+                <h3>Opening Hours</h3>
+                <p><b>Monday - Friday:</b> 11:30 AM - 11:00 PM</p>
+                <p><b>Saturday - Sunday:</b> 11:00 AM - 11:30 PM</p>
+            </div>
+            <div class="footer-box">
+                <h3>Location Details</h3>
+                <p>Plot 45, Heritage Boulevard Row,</p>
+                <p>Near Central Park Plaza, Elite District,</p>
+                <p>Andhra Pradesh, India</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="reserve">
+        <h2>Table Reservation Form</h2>
+        <form>
+        </body>
+        </html>
